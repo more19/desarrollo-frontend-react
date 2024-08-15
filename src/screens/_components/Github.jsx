@@ -11,5 +11,3 @@ const Github =()=>{
     );
 }
 export default Github;
-
-//https://github.com/more19/desarrollo-frontend-react
