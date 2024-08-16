@@ -12,12 +12,13 @@ const Contador = () => {
         setContador(contador - 1);
     };
 
-
     // cuando el componente se haya montado
     useEffect(() => {
         setContador(12);
     }, []);
 
+    //esta funcion especial se ejecuta cuando haya cambiado
+    //el valor del contador
     // useEffect para observar cambios en el contador
     useEffect(() => {
         if (contador === 15) {
@@ -25,6 +26,13 @@ const Contador = () => {
             }
     }, [contador]); // El efecto se ejecuta cada vez que cambia el valor de contador
     
+    // Esta funcion se ejecuta cuando el componente se desmonte
+    useEffect(() => {
+        return () => {
+            console.log('El componente se desmonto');
+        };
+    }, []); // Este efecto se ejecuta una vez cuando el componente se desmonta
+
     return (
         <>
             <h4>Componente Contador</h4>
