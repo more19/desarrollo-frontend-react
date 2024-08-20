@@ -1,12 +1,12 @@
-import Logo from './_components/Logo';
-import Description from './_components/Description';
-//import Content from './_components/Content';
-//import Github from './_components/Github';
+import Logo from './Default/_components/Logo';
+import Description from './Default/_components/Description';
+//import Content from './Default/_components/Content';
+//import Github from './Default/_components/Github';
 
 import OpenLink from '../components/OpenLink';
 //import LessonInfo from '../components/LessonInfo';
 
-import Contador from './_components/contador';
+import Contador from './Default/_components/contador';
 
 const Default =()=>{
     return (

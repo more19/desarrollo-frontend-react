@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #283434;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,35 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-navbar {
+  color: #4ae583;
+  font-size: 30px; 
+  font-weight: bold;
+  font-family: 'sans-serif'
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 50%; 
+}
+
+.table th, .table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th{
+  background-color: #2c4b57;
 }
 
 @keyframes App-logo-spin {
