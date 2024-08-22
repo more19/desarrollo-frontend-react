@@ -7,25 +7,33 @@ import LoginForm from '../screens/Forms/LoginForm';
 
 import App from '../App';
 
-const routes = createBrowserRouter([
+const basename =
+  process.env.NODE_ENV === 'production' ? '/desarrollo-frontend-react' : '/';
+
+const routes = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      children: [
+        {
+          path: '/default',
+          element: <Default />,
+        },
+        {
+          path: '/products',
+          element: <Product />,
+        },
+        {
+          path: '/forms',
+          element: <LoginForm />,
+        },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        path: '/default',
-        element: <Default />,
-      },
-      {
-        path: '/products',
-        element: <Product />,
-      },
-      {
-        path: '/forms',
-        element: <LoginForm />,
-      },
-    ],
-  },
-]);
+    basename: basename,
+  }
+);
 
 export default routes;
