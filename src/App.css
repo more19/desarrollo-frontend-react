@@ -94,6 +94,12 @@ a:hover {
   color: #ffcc00;
 }
 
+.login-user {
+  margin-left: auto;
+  color: #fff;
+  padding-right: 16px;
+}
+
 /*styles forms*/
 .container {
   display: flex;
