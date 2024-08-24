@@ -17,6 +17,7 @@ const LoginForm = () => {
 
   const {email, setEmail, error} = useEmail(''); //usando el hook
   const handleEmail = (event) => {
+    handleChange(event);
     setEmail(event.target.value)
   }
 
@@ -91,10 +92,10 @@ const LoginForm = () => {
               type="email"
               id="email"
               name="email"
-              value={email}
+              value={values.email}
               onChange={handleEmail}
             />
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p className='error-text'>{error}</p>}
           </div>
           <div>
             <label htmlFor="password">Password:</label>

@@ -8,9 +8,9 @@ const useEmail = (initialValue = '') => {
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (email === '') {
-            setError('The email cannot be empty');
+            setError(' The email cannot be empty');
         }else if(!regexEmail.test(email)) {
-            setError('Invalid email address');
+            setError(' Invalid email address');
         } else {
             setError('');
         }

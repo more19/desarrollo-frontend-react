@@ -105,7 +105,11 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 180px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-left: auto; 
 }
 form {
   max-width: 400px;
@@ -151,6 +155,12 @@ form div input {
   padding: 8px 40px;
   font-size: 16px;
   margin-top: 10px;
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  justify-content: left;
 }
 /*styles forms*/
 
