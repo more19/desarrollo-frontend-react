@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
+
 
 const Navbar = () => {
   const form = useSelector((state) => state.form);
@@ -20,14 +21,15 @@ const Navbar = () => {
         <li>
           <Link to="/forms">Login Forms</Link>
         </li>
-        {isAuthenticated && (
+        {isAuthenticated ?(
           <li className="login-user">
             <h8>
               {' '}
               Bienvenido {form.formData.username}: {form.formData.email}
             </h8>
+            {console.log('aquiiiii',form.userLogedIn)};
           </li>
-        )}
+        ): null}
       </ul>
     </nav>
   );

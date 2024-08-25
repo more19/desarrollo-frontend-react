@@ -1,4 +1,9 @@
-import { SET_FORM_DATA, CLEAR_FORM_DATA } from './formTypes';
+import {
+  SET_FORM_DATA,
+  CLEAR_FORM_DATA,
+  LOGIN_USER,
+  LOGOUT_USER,
+} from './formTypes';
 
 const initialState = {
   formData: {
@@ -29,6 +34,16 @@ const formReducer = (state = initialState, action) => {
           email: '',
           password: '',
         },
+      };
+    case LOGIN_USER:
+      return {
+        ...state,
+        userLogedIn: true,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        userLogedIn: false,
       };
     default:
       return state;

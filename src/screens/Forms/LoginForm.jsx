@@ -7,15 +7,22 @@ import ModalInfo from '../../components/ModalInfo';
 import { useState } from 'react';
 import useEmail from '../../hooks/useEmail';
 
+import useLogout from '../../hooks/useLogout';
+
 const LoginForm = () => {
+
   const [values, handleChange] = useForm({ username: '', email: '' }); //aqui el parametro puede ser un objeto, array..
   const [showModalInfo, setShowModalInfo] = useState(false);
+  const [ isLogoutConfirm, setIsLogoutConfirm] = useState(false);
   const form = useSelector((state) => state.form);
   const dispatch = useDispatch();
   const [messageModal, setMessageModal] = useState('');
   const [buttonPassword, setButtonPassword] = useState({typePassword: 'password', labelButton: 'Show'});
 
-  const {email, setEmail, error} = useEmail(''); //usando el hook
+  const isAuthenticated = useSelector((state) => state.form.userLogedIn);
+  const handleLogout = useLogout();
+
+  const {setEmail, error} = useEmail(''); //usando el hook
   const handleEmail = (event) => {
     handleChange(event);
     setEmail(event.target.value)
@@ -24,34 +31,40 @@ const LoginForm = () => {
   const login = (event) => {
     event.preventDefault();
     console.log(values);
-    if(validateLogin(values.password)){  
+    if(error==='' && values.username != '' && values.password === form.default_password ){
+      form.userLogedIn=true;
       dispatch(saveFormData(values)); //aqui guardamos en redux todos los valores
       showModalInfoVisible('Bienvenido al Modulo 7');  
-    } else {
-      dispatch(clearFormData());
-      showModalInfoVisible('Password Incorrecto');  
+    }else if(error != '' || values.username === ''){
+      showModalInfoVisible('Usuario o email incorrectos');
+    }
+     else if(values.password != form.default_password){
+      //dispatch(clearFormData());
+      //form.userLogedIn=false;
+      showModalInfoVisible('Password Incorrecto');
     }
   };
 
+  const logout = () => {
+    showModalInfoVisible('¿Estás seguro de que quieres cerrar sesión?', true);    
+  }
+
+  const confirmLogout = () => {
+    dispatch(clearFormData());
+    handleLogout();
+    hideModalInfo();
+  }
+
   const hideModalInfo = () => {
     setShowModalInfo(false);
+    setIsLogoutConfirm(false);
   };
 
-  const showModalInfoVisible = (message) => {
+  const showModalInfoVisible = (message, isLogoutConfirm=false) => {
     setShowModalInfo(true);
     setMessageModal(message);
+    setIsLogoutConfirm(isLogoutConfirm);
   };
-
-  const validateLogin = (password) => {
-    if(password === form.default_password){
-      form.userLogedIn=true;
-      values.email = email;
-      dispatch(saveFormData(values));
-      return true;
-    } else { 
-      form.userLogedIn=false;
-      return false;}
-  }
 
   const visiblePassword = () => {
     if(buttonPassword.typePassword === 'password'){
@@ -72,6 +85,7 @@ const LoginForm = () => {
           visible={showModalInfo}
           message={messageModal}
           onClose={hideModalInfo}
+          onConfirm={isLogoutConfirm ? confirmLogout : null}
         />
         <form>
           <h5>username: {form.formData.username}</h5>
@@ -110,6 +124,8 @@ const LoginForm = () => {
           </div>
           <div className="button-container">
             <button type="submit" onClick={login}>Submit</button>
+           {isAuthenticated ? (<a href="#" onClick={logout}>Logout</a>) : null} 
+           {console.log('esto es:', form.formData, form.userLogedIn, )}
           </div>
         </form>
       </div>

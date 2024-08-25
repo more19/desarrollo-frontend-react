@@ -162,6 +162,13 @@ form div input {
   font-size: 12px;
   justify-content: left;
 }
+
+.container a {
+  color:#1d14bc;
+  display: flex;
+  justify-content: left;
+  text-align: left;
+}
 /*styles forms*/
 
 /*styles for modals*/

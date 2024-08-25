@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
-const ModalInfo = ({ visible, message, onClose }) => {
+const ModalInfo = ({ visible, message, onClose, onConfirm }) => {
   if (!visible) {
     return null;
-  } //else {
+  }
   return (
     <div className="modal-overlay">
       <motion.div
@@ -15,6 +15,7 @@ const ModalInfo = ({ visible, message, onClose }) => {
         <div>
           <p>{message}</p>
         </div>
+        {onConfirm && <button onClick={onConfirm}>Presionar para Salir!!!</button>}
         <button onClick={onClose} className="close-btn-success">
           X
         </button>
