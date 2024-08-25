@@ -15,7 +15,9 @@ const ModalInfo = ({ visible, message, onClose, onConfirm }) => {
         <div>
           <p>{message}</p>
         </div>
-        {onConfirm && <button onClick={onConfirm}>Presionar para Salir!!!</button>}
+        {onConfirm && (
+          <button onClick={onConfirm}>Presionar para Salir!!!</button>
+        )}
         <button onClick={onClose} className="close-btn-success">
           X
         </button>

@@ -1,5 +1,5 @@
-import ContentList from "./contentList";
-import OpenLink from "../../components/OpenLink";
+import ContentList from './contentList';
+import OpenLink from '../../components/OpenLink';
 
 const Section = ({ sectionTitle }) => {
   return (
@@ -16,18 +16,19 @@ const Section = ({ sectionTitle }) => {
           </p>
         ) : null}
         {sectionTitle === 'Recursos Adicionales' ? (
-        <div>
-          <p>
-            Para profundizar en los temas cubiertos, consulta los siguientes
-            recursos:
-          </p>
-          <OpenLink title="Learn React" url="https://react.dev/"/>
-          <OpenLink title="Framer Motion" url="https://www.framer.com/motion/"/>
+          <div>
+            <p>
+              Para profundizar en los temas cubiertos, consulta los siguientes
+              recursos:
+            </p>
+            <OpenLink title="Learn React" url="https://react.dev/" />
+            <OpenLink
+              title="Framer Motion"
+              url="https://www.framer.com/motion/"
+            />
           </div>
         ) : null}
-        {sectionTitle === 'Temas Cubiertos' ? (
-          <ContentList/>
-        ) : null}
+        {sectionTitle === 'Temas Cubiertos' ? <ContentList /> : null}
       </div>
     </div>
   );

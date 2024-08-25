@@ -1,6 +1,6 @@
 const ContentList = () => {
   return (
-    <div >
+    <div>
       <ul className="topics-list">
         <li>Componentes funcionales y de clase</li>
         <li>
