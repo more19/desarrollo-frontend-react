@@ -11,7 +11,7 @@ import useLogout from '../../hooks/useLogout';
 
 const LoginForm = () => {
 
-  const [values, handleChange] = useForm({ username: '', email: '' }); //aqui el parametro puede ser un objeto, array..
+  const [values, handleChange, resetForm] = useForm({ username: '', email: '', password: ''}); //aqui el parametro puede ser un objeto, array..
   const [showModalInfo, setShowModalInfo] = useState(false);
   const [ isLogoutConfirm, setIsLogoutConfirm] = useState(false);
   const form = useSelector((state) => state.form);
@@ -22,7 +22,7 @@ const LoginForm = () => {
   const isAuthenticated = useSelector((state) => state.form.userLogedIn);
   const handleLogout = useLogout();
 
-  const {setEmail, error} = useEmail(''); //usando el hook
+  const {error, setEmail} = useEmail(''); //usando el hook
   const handleEmail = (event) => {
     handleChange(event);
     setEmail(event.target.value)
@@ -39,8 +39,6 @@ const LoginForm = () => {
       showModalInfoVisible('Usuario o email incorrectos');
     }
      else if(values.password != form.default_password){
-      //dispatch(clearFormData());
-      //form.userLogedIn=false;
       showModalInfoVisible('Password Incorrecto');
     }
   };
@@ -53,6 +51,7 @@ const LoginForm = () => {
     dispatch(clearFormData());
     handleLogout();
     hideModalInfo();
+    resetForm();
   }
 
   const hideModalInfo = () => {
@@ -88,8 +87,8 @@ const LoginForm = () => {
           onConfirm={isLogoutConfirm ? confirmLogout : null}
         />
         <form>
+          <h3>LOGIN FORM</h3>
           <h5>username: {form.formData.username}</h5>
-          <h5>email: {form.formData.email}</h5>
           <div>
             <label htmlFor="username">Username</label>
             <input
@@ -125,7 +124,6 @@ const LoginForm = () => {
           <div className="button-container">
             <button type="submit" onClick={login}>Submit</button>
            {isAuthenticated ? (<a href="#" onClick={logout}>Logout</a>) : null} 
-           {console.log('esto es:', form.formData, form.userLogedIn, )}
           </div>
         </form>
       </div>

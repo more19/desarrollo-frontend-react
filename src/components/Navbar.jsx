@@ -27,7 +27,6 @@ const Navbar = () => {
               {' '}
               Bienvenido {form.formData.username}: {form.formData.email}
             </h8>
-            {console.log('aquiiiii',form.userLogedIn)};
           </li>
         ): null}
       </ul>
