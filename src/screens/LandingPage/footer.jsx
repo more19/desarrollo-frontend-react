@@ -1,9 +1,12 @@
 const Footer = () => {
-    return(
-        <div>
-            <h8>es el footer</h8>
-        </div>
-    )
-}
+  return (
+    <div>
+        <div className="section-footer"/>
+      <footer>
+        <p>&copy; 2024 Módulo 7. USIP.</p>
+      </footer>
+    </div>
+  );
+};
 
 export default Footer;

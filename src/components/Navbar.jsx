@@ -23,10 +23,10 @@ const Navbar = () => {
         </li>
         {isAuthenticated ?(
           <li className="login-user">
-            <h8>
+            <span>
               {' '}
               Bienvenido {form.formData.username}: {form.formData.email}
-            </h8>
+            </span>
           </li>
         ): null}
       </ul>

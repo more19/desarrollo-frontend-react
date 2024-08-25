@@ -1,7 +1,7 @@
 const Title = () => {
     return(
-        <div>
-            <h1>TITLE</h1>
+        <div className="title">
+            <h1>Módulo 7: DESARROLLO FRONTEND CON REACTJS</h1>
         </div>
     )
 }
