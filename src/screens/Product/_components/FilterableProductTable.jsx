@@ -36,8 +36,8 @@ const FilterableProductTable = () => {
   },[]);
 
   return (
-    <form action="">
-      <div className='contenedor'>
+    <form  className='table' action="">
+      <div  className='contenedor'>
         <SearchBar
           filterText={filterText}
           inStockOnly={inStockOnly}

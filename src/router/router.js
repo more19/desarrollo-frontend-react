@@ -4,6 +4,7 @@ import Default from '../screens/Default';
 import Product from '../screens/Product';
 
 import LoginForm from '../screens/Forms/LoginForm';
+import LandingPage from '../screens/LandingPage';
 
 import App from '../App';
 
@@ -16,6 +17,10 @@ const routes = createBrowserRouter(
       path: '/',
       element: <App />,
       children: [
+        {
+          path: '/',
+          element: <LandingPage />,
+        },
         {
           path: '/default',
           element: <Default />,
